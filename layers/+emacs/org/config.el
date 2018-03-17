@@ -34,3 +34,6 @@ used.")
 
 (defvar org-enable-hugo-support nil
   "If non-nil, Hugo (https://gohugo.io) related packages are configured.")
+
+(defvar org-enable-jira-support nil
+  "If non-nil, Jira (https://www.atlassian.com/software/jira) related packages are configured.")

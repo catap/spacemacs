@@ -26,6 +26,7 @@
         (org-expiry :location built-in)
         (org-journal :toggle org-enable-org-journal-support)
         org-download
+        (org-jira :toggle org-enable-jira-support)
         org-mime
         org-pomodoro
         org-present
@@ -544,6 +545,49 @@ Headline^^            Visit entry^^               Filter^^                    Da
       (spacemacs/set-leader-keys-for-major-mode 'org-mode
         "iDy" 'org-download-yank
         "iDs" 'org-download-screenshot))))
+
+(defun org/init-org-jira ()
+  (use-package org-jira
+    :defer t
+    :commands (org-jira-get-projects
+               org-jira-browse-issue
+               org-jira-get-issues
+               org-jira-get-issues-headonly
+               org-jira-get-issues-from-filter-headonly
+               org-jira-get-issues-from-filter
+               org-jira-update-issue
+               org-jira-progress-issue
+               org-jira-refresh-issue
+               org-jira-create-issue
+               org-jira-copy-current-issue-key
+               org-jira-create-subtask
+               org-jira-get-subtasks
+               org-jira-update-comment
+               org-jira-todo-to-jira)
+    :init
+    (progn
+      (spacemacs/declare-prefix "aoJ" "jira")
+      (spacemacs/declare-prefix "aoJp" "projects")
+      (spacemacs/declare-prefix "aoJi" "issues")
+      (spacemacs/declare-prefix "aoJs" "subtasks")
+      (spacemacs/declare-prefix "aoJc" "comments")
+      (spacemacs/declare-prefix "aoJt" "todos")
+      (spacemacs/set-leader-keys
+        "aoJpg" 'org-jira-get-projects
+        "aoJib" 'org-jira-browse-issue
+        "aoJig" 'org-jira-get-issues
+        "aoJih" 'org-jira-get-issues-headonly
+        "aoJif" 'org-jira-get-issues-from-filter-headonly
+        "aoJiF" 'org-jira-get-issues-from-filter
+        "aoJiu" 'org-jira-update-issue
+        "aoJiw" 'org-jira-progress-issue
+        "aoJir" 'org-jira-refresh-issue
+        "aoJic" 'org-jira-create-issue
+        "aoJik" 'org-jira-copy-current-issue-key
+        "aoJsc" 'org-jira-create-subtask
+        "aoJsg" 'org-jira-get-subtasks
+        "aoJcu" 'org-jira-update-comment
+        "aoJtj" 'org-jira-todo-to-jira))))
 
 (defun org/init-org-mime ()
   (use-package org-mime

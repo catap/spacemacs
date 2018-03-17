@@ -19,6 +19,7 @@
   - [[#project-support][Project support]]
   - [[#org-brain-support][Org-brain support]]
   - [[#mode-line-support][Mode line support]]
+  - [[#jira-support][Jira support]]
 - [[#key-bindings][Key bindings]]
   - [[#starting-org-mode][Starting org-mode]]
   - [[#toggles][Toggles]]
@@ -43,6 +44,7 @@
   - [[#org-brain][Org-brain]]
     - [[#application-bindings][Application bindings]]
     - [[#visualization-bindings][Visualization bindings]]
+  - [[#org-jira][Org-jira]]
 
 * Description
 This layer enables [[http://orgmode.org/][org mode]] for Spacemacs.
@@ -264,6 +266,23 @@ To permanently enable mode line display of org clock, add this snippet to your
 
 #+BEGIN_SRC elisp
   (setq spaceline-org-clock-p t)
+#+END_SRC
+
+** Jira support
+To bring Jira and OrgMode together over [[https://github.com/ahungry/org-jira][org-jira]] set the variable =org-enable-jira-support= to =t=.
+
+#+BEGIN_SRC emacs-lisp
+  (setq-default dotspacemacs-configuration-layers '(
+    (org :variables
+         org-enable-jira-support t
+         jiralib-url "https://yourcompany.atlassian.net:443")))
+#+END_SRC
+
+If you would like don't enter login/password each time you go to connect,
+ you can add to your ~/.authinfo.gpg or ~/.authinfo file, in a format similar to:
+
+#+BEGIN_SRC
+machine yourcompany.atlassian.net login you@example.com password yourPassword port 443
 #+END_SRC
 
 * Key bindings
@@ -702,3 +721,23 @@ are available.
 | ~f~         | Find/visit another entry to visualize |
 | ~r~         | Rename this, or another, entry        |
 |             |                                       |
+
+** Org-jira
+
+| Key Binding     | Description                         |
+|-----------------+-------------------------------------|
+| ~SPC a o J p g~ | Get projects list                   |
+| ~SPC a o J i b~ | Browse the issue                    |
+| ~SPC a o J i g~ | Get issues                          |
+| ~SPC a o J i h~ | Get only head of issues             |
+| ~SPC a o J i f~ | Get only head of issues from filter |
+| ~SPC a o J i F~ | Get issues from filter              |
+| ~SPC a o J i u~ | Update the issue                    |
+| ~SPC a o J i w~ | Progress the issue                  |
+| ~SPC a o J i r~ | Refresh the issue                   |
+| ~SPC a o J i c~ | Create the issue                    |
+| ~SPC a o J i k~ | Copy current issue key              |
+| ~SPC a o J s c~ | Create a subtask                    |
+| ~SPC a o J s g~ | Get subtasks                        |
+| ~SPC a o J c u~ | Update comment                      |
+| ~SPC a o J t j~ | TODO list to jira                   |
